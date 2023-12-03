@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initail-scale=1.0" />
+    <title>Mini Project</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+      body {
+  color: black;
+  font-family: "raleway";
+}
+div {
+  letter-spacing: 1px ;
+  word-spacing: 2px;
+}
+.gap {
+  min-height: 50px;
+}
+.code-header{
+  text-align:right;
+  /* background:#f8f8f8; */
+  background:none;
+  /* border:1px solid #e5e5e5; */
+  /* border:1px solid #14006b; */
+  box-sizing:border-box
+}
+.code-header a{
+  font-size:15px;
+  display:inline-block;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor:pointer;
+  /* border-left:1px solid #e5e5e5; */
+  box-sizing:border-box;
+  padding:6px 13px;
+  background: #2200cc;
+  border: 3px solid white;
+  outline: 1.5px dashed black;
+  color: white;
+  margin: 15px 0 ;
+
+}
+.code-header a:hover{
+  /* background:#f3f3f3;
+   */
+  transition:all 0.1s linear
+}
+.msg-alert{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#333;
+  z-index:1000;
+  color:#fff;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:15px;
+  padding:8px 12px;
+  border-radius:4px
+}
+code[class*="language-"],
+pre[class*="language-"]{
+  font-size:14px;
+  letter-spacing:.02rem;
+  line-height:1.4;
+  color: #ffffffce;
+  /* color:black; */
+  background:none;
+  /* text-shadow:0 1px white; */
+  /* font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace; */
+  text-align:left;
+  white-space:pre;
+  word-spacing:normal;
+  word-break:normal;
+  word-wrap:normal;
+  -moz-tab-size:4;
+  -o-tab-size:4;
+  tab-size:4;
+  -webkit-hyphens:none;
+  -moz-hyphens:none;
+  -ms-hyphens:none;
+  hyphens:none
+}
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"]::-moz-selection{
+  text-shadow:none;
+  background:#b3d4fc}
+pre[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection,
+code[class*="language-"]::selection{
+  text-shadow:none;
+  background:#b3d4fc
+}
+@media print{code[class*="language-"],pre[class*="language-"]{
+  text-shadow:none
+  }
+}
+pre[class*="language-"]{
+  padding:1em;
+  margin:0;
+  overflow:auto;
+  border-left:5px solid #ffffff34;
+  border-radius: 15px;
+  border-top:0;
+  box-sizing:border-box
+}
+:not(pre)>code[class*="language-"],
+pre[class*="language-"]{
+  background:#08002b ;
+  /* background:#f8f8f8 */
+}
+:not(pre)>code[class*="language-"]{
+  padding:.1em;
+  border-radius:.3em;
+  white-space:normal
+}
+.token.comment,.token.prolog,
+.token.doctype,.token.cdata{
+  color:slategray
+}
+.token.punctuation{
+  color:#999
+}
+.namespace{
+  opacity:.7
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted{
+  color:rgb(224, 0, 123)
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted{
+  color:rgb(148, 223, 0)
+}
+.token.tag {
+  color : #247cff;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string{
+  color:#f1c083
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword{
+  color:rgb(0, 165, 236)
+}
+.token.attr-value,.token.url {
+  color: rgb(238, 214, 0);
+}
+.token.function,
+.token.class-name{
+  color:#DD4A68
+}
+.token.regex,
+.token.important,
+.token.variable{
+  color:#e90
+}
+.token.important,
+.token.bold{
+  font-weight:bold
+}
+.token.italic{
+  font-style:italic
+}
+.token.entity{
+  cursor:help
+}
+.container{
+  width:95%;
+  margin:0 auto
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+  </head>
+
+
+  <body>
+    <style>
+      #back {
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        position: fixed;
+        margin: 0%;
+        padding: 0;
+        transition: ease ;
+      }
+      #loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 70px;
+        width: 70px;
+        margin: -35px 0 0 -35px;
+      }
+  
+      #loader span {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        -webkit-animation: loader 1.5s infinite ease-out;
+        animation: loader 1.5s infinite ease-out;
+      }
+  
+      #loader span:nth-child(1) {
+        left: 0px;
+        -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
+      }
+  
+      #loader span:nth-child(2) {
+        left: 25px;
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+      }
+  
+      #loader span:nth-child(3) {
+        left: 45px;
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+      }
+  
+      #loader span:nth-child(4) {
+        left: 65px;
+        -webkit-animation-delay: 0.8s;
+        animation-delay: 0.8s;
+      }
+  
+      @keyframes loader {
+        0% {
+          background: #161069;
+          -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+        }
+        50% {
+          background: #161069;
+          -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+        }
+        100% {
+          background: #3225ec;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+  
+      @-webkit-keyframes loader {
+        0% {
+          background: #1e10ec;
+          -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+        }
+        50% {
+          background: rgba(0, 0, 0, 0.25);
+          -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+        }
+        100% {
+          background: #161069;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+    </style>
+    
+<div id="back">
+  <div id="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+    <div class="container">
+      <div class="gap"></div>
+      <div>
+        <h1>Lets start.</h1>
+      <h3>First Install ( ⚫ <h2>spck code editor</h2> )  and set your development enviorment, we use spack editor to create ( ⚫ <h2>new folder</h2> ) first then ( ⚫ <h2>index.html</h2> ) file.</h3>
+      <h3> ( ⚫ Reminding We Use <h2>confetti();</h2> Library.</h3>
+      </div>
+      <div class="gap">
+      </div>
+      <h1>🔵 links</h1>
+<pre>
+    <code class="language-html">
+ &lt;title&gt;Guess Game ▲ &lt;/title&gt;
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+ &lt;link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /&gt;
+ &lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"&gt; &lt;/script&gt;
+  </code>
+</pre>
+
+<div class="gap"></div>
+<h1>🔵 Basic Html</h1>
+<pre>
+  <code class="language-html">
+&lt;html&gt;
+  &lt;head&gt;
+    🔵 Links Here
+    &lt;style&gt;
+        🔵 CSS Here
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;🔵 Header&lt;/header&gt;
+    &lt;section&gt;🔵 Section&lt;/section&gt;
+    &lt;footer&gt;🔵 Footer&lt;/footer&gt;
+  &lt;/body&gt;
+  &lt;script&gt;
+    🔵 Java Script
+  &lt;/script&gt;
+&lt;/html&gt;
+
+  </code>
+</pre>
+<div class="gap"></div>
+<h1>🔵 Header </h1>
+
+<pre>
+<code class="language-html">
+&lt;header&gt;
+  &lt;div class="logo"&gt;
+      &lt;h3&gt;Guess Game ▲&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="abox"&gt;
+      &lt;h3&gt;attempts&lt;/h3&gt;
+      &lt;h2 id="count"&gt;0&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+</code>
+</pre>
+
+
+<div class="gap"></div>
+<h1>🔵 Section</h1>
+<pre>
+<code class="language-html">
+&lt;section&gt;
+  &lt;div&gt;
+      &lt;h4&gt;
+          Guess the Number Btw 1 to 100 &lt;br&gt;
+          in minimum attempts
+      &lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+      &lt;h1 id="Number"&gt;&lt;/h1&gt;
+      &lt;div&gt;
+          &lt;h2 id="win"&gt;Input&lt;/h2&gt;
+          &lt;h3 id="Info"&gt; Your Guess..&lt;/h3&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code>
+</pre>
+
+<div class="gap"></div>
+<h1>🔵 Footer</h1>
+<pre>
+<code class="language-html">
+&lt;footer&gt;
+  &lt;div&gt;
+      &lt;p&gt;Input &nbsp; &nbsp;&lt;/p&gt;
+      &lt;input id="input" onkeydown="if( event.key === 'Enter') guess()" type="number"&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+</code>
+</pre>
+
+
+<div class="gap"></div>
+<h1>🔵 Footer</h1>
+<pre>
+<code class="language-html">
+&lt;footer&gt;
+  &lt;div&gt;
+      &lt;p&gt;Input &nbsp; &nbsp;&lt;/p&gt;
+      &lt;input id="input" onkeydown="if( event.key === 'Enter') guess()" type="number"&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+</code>
+</pre>
+
+
+<div class="gap"></div>
+<h1>🔵 Css Design</h1>
+<pre>
+<code class="language-css">
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: "Raleway";
+}
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+div.logo {
+    width: 180px;
+}
+div.abox {
+    width: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #bfd9ff;
+    border-radius: 10px 0 0 10px;
+}
+h2#count {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+section {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+footer {
+    width: 100%;
+    background: #bfd9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer div {
+    display: flex;
+}
+</code>
+</pre>
+
+
+
+
+<div class="gap"></div>
+<h1>🔵 JavaScript</h1>
+<pre><code class="language-javascript">
+  // Random number Btw 1 to 100
+  var guessMe = Math.floor(Math.random() * 100) + 1;
+  var attempt = 0;
+
+  function guess() {
+    var input = document.getElementById("input");
+    var number = document.getElementById("Number");
+    var x = input.value;
+    var info = document.getElementById("Info");
+    var count = document.getElementById("count");
+    var win = document.getElementById("win");
+
+    // Clearing Content
+    number.textContent = "";
+    info.textContent = "";
+    count.textContent = "";
+    win.textContent = "";
+
+    // Show the Content
+    number.textContent = x;
+    attempt++;
+    count.textContent = attempt;
+
+    // operaion
+    if (x > guessMe) {
+      info.textContent = "Too High...";
+    } else if (x < guessMe) {
+      info.textContent = "Too Low...";
+    } else {
+      win.textContent = "Congratulation! You guessed it!";
+      info.textContent = " in " + attempt + "th attempt ";
+      confetti();
+    }
+
+    input.value = "";
+  }
+</code></pre>
+<div class="gap"></div>
+<div>
+  <h1>Oops thats it.</h1>
+<h3>We Created ( ⚫ <h2>Mini Game</h2> ) 
+<h3> ( ⚫ Reminding We Could Modify This Game To Another <h2>Game</h2>, Thank You All.</h3>
+<br>
+<br><br>
+<code>
+  <h3>~ Mohammed Anfas K P</h3>
+</code>
+</div>
+<div class="gap">
+</div>
+<div class="gap"></div>
+<div class="gap"></div>
+
+    <script>
+      function forEachElement(selector, fn) {
+  var elements = document.querySelectorAll(selector);
+  for (var i = 0; i < elements.length; i++) fn(elements[i], i);
+}
+
+forEachElement("pre>code[class*='language-']", function (el, i) {
+  el.parentNode.insertAdjacentHTML(
+    "beforebegin",
+    "<div class='code-header'><a class='copy-code'>Copy</a></div>"
+  );
+});
+
+forEachElement(".copy-code", function (el, i) {
+  el.addEventListener("click", function () {
+    var body = document.getElementsByTagName("body")[0];
+
+    var txt = document.createElement("textarea");
+    txt.setAttribute("id", "txt-cpy");
+    txt.style.position = "absolute";
+    txt.style.left = "-9999em";
+    txt.value = el.parentNode.nextElementSibling.textContent;
+    body.appendChild(txt);
+
+    document.getElementById("txt-cpy").select();
+
+    var div = document.createElement("div");
+
+    div.setAttribute("class", "msg-alert");
+    try {
+      var successful = document.execCommand("copy");
+      successful
+        ? (div.innerHTML = "Successfully copied to clipboard !")
+        : (div.innerHTML = "Fail to copy to clipboard !");
+      body.appendChild(div);
+      confetti();
+    } catch (err) {
+      console.log("Oops, unable to copy");
+    }
+
+    body.removeChild(txt);
+    setTimeout(function () {
+      body.removeChild(div);
+    }, 2000);
+  });
+
+  var copyButtons = document.getElementsByClassName("copy-code");
+  var copyElements = document.getElementsByClassName("copy-code");
+
+  // Loop through each copy button
+  Array.from(copyButtons).forEach(function (copyButton) {
+    copyButton.addEventListener("click", function () {
+      // Change the content of all elements with the class "copy-code" to "copied"
+      Array.from(copyElements).forEach(function (copy) {
+        copy.textContent = "copied";
+
+        // After one second, change it back to "copy"
+        setTimeout(function () {
+          copy.textContent = "copy";
+        }, 1000); // 1000 milliseconds = 1 second
+      });
+    });
+  });
+});
+
+    </script>
+        <script>
+document.getElementById("back").style.display = "block";
+  setTimeout(function() {
+    // Hide the loader after 2 seconds
+    document.getElementById("back").style.display = "none";
+  }, 2800);
+        </script>
+  </body>
+</html>
