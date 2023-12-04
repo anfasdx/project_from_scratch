@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initail-scale=1.0" />
     <title>Mini Project</title>
     <link
@@ -285,6 +285,9 @@ pre[class*="language-"]{
           transform: scale(1);
         }
       }
+      img {
+        border-radius: 10px;
+      }
     </style>
     
 <div id="back">
@@ -299,7 +302,9 @@ pre[class*="language-"]{
       <div class="gap"></div>
       <div>
         <h1>Lets start.</h1>
-      <h3>First Install ( ⚫ <h2>spck code editor</h2> )  and set your development enviorment, we use spack editor to create ( ⚫ <h2>new folder</h2> ) first then ( ⚫ <h2>index.html</h2> ) file.</h3>
+      <h3>First Install ( ⚫ <h2>spck code editor</h2>
+        <img src="./spck.jpg" alt="spck"> <br><br>
+        )  and set your development enviorment, we use spack editor to create ( ⚫ <h2>new folder</h2> ) first then ( ⚫ <h2>index.html</h2> ) file.</h3>
       <h3> ( ⚫ Reminding We Use <h2>confetti();</h2> Library.</h3>
       </div>
       <div class="gap">
@@ -308,6 +313,7 @@ pre[class*="language-"]{
 <pre>
     <code class="language-html">
  &lt;title&gt;Guess Game ▲ &lt;/title&gt;
+ &lt;meta charset="UTF-8" /&gt;
  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
  &lt;link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /&gt;
  &lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"&gt; &lt;/script&gt;
@@ -383,27 +389,12 @@ pre[class*="language-"]{
 <code class="language-html">
 &lt;footer&gt;
   &lt;div&gt;
-      &lt;p&gt;Input &nbsp; &nbsp;&lt;/p&gt;
+      &lt;p&gt;Input &amp;nbsp&semi; &lt;/p&gt;
       &lt;input id="input" onkeydown="if( event.key === 'Enter') guess()" type="number"&gt;
   &lt;/div&gt;
 &lt;/footer&gt;
 </code>
 </pre>
-
-
-<div class="gap"></div>
-<h1>🔵 Footer</h1>
-<pre>
-<code class="language-html">
-&lt;footer&gt;
-  &lt;div&gt;
-      &lt;p&gt;Input &nbsp; &nbsp;&lt;/p&gt;
-      &lt;input id="input" onkeydown="if( event.key === 'Enter') guess()" type="number"&gt;
-  &lt;/div&gt;
-&lt;/footer&gt;
-</code>
-</pre>
-
 
 <div class="gap"></div>
 <h1>🔵 Css Design</h1>
@@ -500,16 +491,28 @@ footer div {
     input.value = "";
   }
 </code></pre>
+<style>
+  .my a {
+    color: #e90;
+    font-size: 30px;
+  }
+</style>
 <div class="gap"></div>
 <div>
   <h1>Oops thats it.</h1>
 <h3>We Created ( ⚫ <h2>Mini Game</h2> ) 
-<h3> ( ⚫ Reminding We Could Modify This Game To Another <h2>Game</h2>, Thank You All.</h3>
+  <div class="my">
+    <a href="https://anfaskpgame.vercel.app/">https://anfaskpgame.vercel.app/</a>
+  </div>
+<h3> ( ⚫  We Could Modify This Game To Another <h2>Game</h2>, Thank You All.</h3>
 <br>
 <br><br>
 <code>
   <h3>~ Mohammed Anfas K P</h3>
 </code>
+<br><br><br>
+<div class="gap"></div>
+<div class="my"><code>YouTub : <br></code> <a href="https://www.youtube.com/@anfaskp">https://www.youtube.com/@anfaskp</a></div>
 </div>
 <div class="gap">
 </div>
@@ -587,7 +590,7 @@ document.getElementById("back").style.display = "block";
   setTimeout(function() {
     // Hide the loader after 2 seconds
     document.getElementById("back").style.display = "none";
-  }, 2800);
+  }, 2600);
         </script>
   </body>
 </html>
