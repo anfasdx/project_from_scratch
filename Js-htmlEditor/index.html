@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - w3school</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en-US">
+<head>
+<title>Gcode IDE</title>
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/trystyle.css"> 
+
+<script type='text/javascript'>
+ 
+</script>
+<script>
+if (window.addEventListener) {              
+    window.addEventListener("resize", browserResize);
+} else if (window.attachEvent) {                 
+    window.attachEvent("onresize", browserResize);
+}
+var xbeforeResize = window.innerWidth;
+
+function browserResize() {
+    var afterResize = window.innerWidth;
+    if ((xbeforeResize < (970) && afterResize >= (970)) || (xbeforeResize >= (970) && afterResize < (970)) ||
+        (xbeforeResize < (728) && afterResize >= (728)) || (xbeforeResize >= (728) && afterResize < (728)) ||
+        (xbeforeResize < (468) && afterResize >= (468)) ||(xbeforeResize >= (468) && afterResize < (468))) {
+        xbeforeResize = afterResize;
+        googletag.cmd.push(function() {
+            googletag.pubads().refresh([gptAdSlots[0]]);
+        });
+    }
+}
+</script>
+<script type="text/javascript">
+function submitTryit() {
+  var text = document.getElementById("textareaCode").value;
+  var ifr = document.createElement("iframe");
+  ifr.setAttribute("frameborder", "0");
+  ifr.setAttribute("id", "iframeResult");  
+  document.getElementById("iframewrapper").innerHTML = "";
+  document.getElementById("iframewrapper").appendChild(ifr);
+  var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+  ifrw.document.open();
+  ifrw.document.write(text);  
+  ifrw.document.close();
+}
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const textArea = document.getElementById("textareaCode");
+    const lineNumbers = document.querySelector(".line-numbers");
+
+    textArea.addEventListener("input", updateLineNumbers);
+
+    function updateLineNumbers() {
+      const lines = textArea.value.split("\n");
+      const lineCount = lines.length;
+
+      // Create an array of line numbers and join them with line breaks
+      const lineNumbersArray = Array.from({ length: lineCount }, (_, index) => index + 1);
+
+      // Set the line numbers text with appropriate spacing
+      lineNumbers.innerHTML = lineNumbersArray
+        .map((lineNumber) => `<span>${lineNumber}</span>`)
+        .join("\n");
+    }
+
+    // Initial line numbers setup
+    updateLineNumbers();
+  });
+</script>
+<style>
+
+</style>
+</head>
+<body class="body">
+<div id='tryitLeaderboard'>
+<!-- TryitLeaderboard -->
+<!-- <div><pre><h2><g>G</g><c>C</c><o>o</o><oo>o</oo><d>d</d><e>e</e> IDE</h2></pre> </div> -->
+<h2>html IDE</h2>
+</div> 
+
+<Style>
+   .textarea-container {
+    display: flex;
+    height: 92%;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .line-numbers {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: right;
+    border-right: 1px solid #ccc;
+  }
+
+  /* Ensure consistent width and height for line numbers */
+  .line-numbers span {
+    display: block; /* Display line numbers as block elements */
+    width: 30px; /* Adjust this width as needed */
+    text-align: center;
+    height: 18px; /* Adjust this height as needed */
+    line-height: 20px; /* Center line numbers vertically */
+  }
+
+  textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    overflow: hidden !important ;
+   height: 250% !important;/* Allow the textarea to expand as needed */
+  }
+</Style>
+
+<div class="container">
+  <div class="textareacontainer">
+    <div class="textarea">
+      <div style="overflow:hidden;">
+        <div class="headerText">Edit This Code:</div>
+        <button class="seeResult" type="button" onclick="submitTryit()">See Result &raquo;</button>
+      </div>
+      <div class="textareawrapper">
+
+        <div class="textarea-container">
+          <div class="line-numbers">
+            <!-- Line numbers will be added dynamically using JavaScript -->
+          </div>
+          <textarea autocomplete="off" class="code_input" id="textareaCode" wrap="logical" spellcheck="false">
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1> My First Heading </h1>
+    <p> My first paragraph. </p>
+  </body>
+</html>
+  </textarea>
+        </div>
+          <!-- <form autocomplete="off" style="margin:0px;display:none;">
+            <input type="hidden" name="code" id="code" />
+            <input type="hidden" id="bt" name="bt" />
+          </form> -->
+       </div>
+    </div>
+  </div>
+  <div class="iframecontainer">
+    <div class="iframe">
+      <div style="overflow:auto;">
+        <div class="headerText">Result:</div>
+      </div>
+      <div id="iframewrapper" class="iframewrapper">
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="footerText">Gcode online - &copy; <a href="#">anfaskp.io</a></div>      
+</div>
+
+
+<script>submitTryit()</script>
+</body>
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/remodal/1.0.3/remodal.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
