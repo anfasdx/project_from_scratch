@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 <body>
@@ -485,6 +486,28 @@ class="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-
 <!-- END Page Footer -->
 </div>
 <!-- END Page Container -->
+
+<script>
+    // Toggle dropdown menu for user settings
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownButton = document.getElementById('tk-dropdown-layouts-user');
+    const dropdownMenu = document.querySelector('[aria-labelledby="tk-dropdown-layouts-user"]');
+
+    dropdownButton.addEventListener('click', function () {
+        dropdownMenu.classList.toggle('hidden');
+        dropdownMenu.classList.toggle('transition');
+        dropdownMenu.classList.toggle('ease-out');
+        dropdownMenu.classList.toggle('duration-100');
+        dropdownMenu.classList.toggle('enter');
+        dropdownMenu.classList.toggle('enter-start');
+        dropdownMenu.classList.toggle('enter-end');
+        dropdownMenu.classList.toggle('leave');
+        dropdownMenu.classList.toggle('leave-start');
+        dropdownMenu.classList.toggle('leave-end');
+    });
+});
+
+</script>
 
 </body>
 </html>
