@@ -1,7 +1,7 @@
 I conducted a work shop to my peers and senior students of my college,
 with well structured js and css, html 
 
-- [ ] We Use Confitti Library
+- [x] We Use Confitti Library
 - [x] #739
 - [x] Design @octocat :+1: This PR looks great - it's ready to merge! :shipit:
 - [ ] background color is `#000000` and `#ffffff`, `#0969DA`
